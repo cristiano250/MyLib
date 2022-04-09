@@ -11,7 +11,7 @@ function renderBook(doc){
 
     li.setAttribute('data-id', doc.id);
     Tytuł.textContent = doc.data().Tytuł;
-    Gatunek.boolean = doc.data().Gatunek;
+    Gatunek.booleanContent = doc.data().Gatunek;
     Ilość.textContent = doc.data().Ilość;
     cross.textContent = 'x';
 
@@ -51,7 +51,7 @@ form.addEventListener('submit', (e) => {
 });
 
 // real-time listener
-db.collection('Książki').orderBy('Gatunek').onSnapshot(snapshot => {
+db.collection('Książki').onSnapshot(snapshot => {
     let changes = snapshot.docChanges();
     changes.forEach(change => {
         console.log(change.doc.data());
