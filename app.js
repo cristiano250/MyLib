@@ -11,7 +11,7 @@ function renderBook(doc){
 
     li.setAttribute('data-id', doc.id);
     Tytuł.textContent = doc.data().Tytuł;
-    Gatunek.booleanContent = doc.data().Gatunek;
+    Gatunek.contentEditable = doc.data().Gatunek;
     Ilość.textContent = doc.data().Ilość;
     cross.textContent = 'x';
 
