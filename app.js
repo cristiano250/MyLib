@@ -40,7 +40,7 @@ function renderBook(doc){
 // saving data
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    db.collection('Książki').add({
+    db.collection('Książki').addDoc({
         Tytuł: form.Tytuł.value,
         Gatunek: form.Gatunek.value,
         Ilość: form.Ilość.value
