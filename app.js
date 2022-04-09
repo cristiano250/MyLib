@@ -5,18 +5,18 @@ const form=document.querySelector('#add-book-form')
 function renderBook(doc){
     let li = document.createElement('li');
     let Tytuł = document.createElement('span');
-    let Gatunek = document.createElement('span');
+    let czyNowa = document.createElement('span');
     let Ilość = document.createElement('span');
     let cross = document.createElement('div');
 
     li.setAttribute('data-id', doc.id);
     Tytuł.textContent = doc.data().Tytuł;
-    Gatunek.booleanContent = doc.data().Gatunek;
+    czyNowa.booleanContent = doc.data().czyNowa;
     Ilość.textContent = doc.data().Ilość;
     cross.textContent = 'x';
 
     li.appendChild(Tytuł);
-    li.appendChild(Gatunek);
+    li.appendChild(czyNowa);
     li.appendChild(Ilość);
     li.appendChild(cross);
 
@@ -42,16 +42,16 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     db.collection('Książki').add({
         Tytuł: form.Tytuł.value,
-        Gatunek: form.Gatunek.value,
+        czyNowa: form.czyNowa.value,
         Ilość: form.Ilość.value
     });
     form.Tytuł.value = '';
-    form.Gatunek.value = '';
+    form.czyNowa.value = '';
     form.Ilość.value = '';
 });
 
 // real-time listener
-db.collection('Książki').orderBy('Gatunek').onSnapshot(snapshot => {
+db.collection('Książki').onSnapshot(snapshot => {
     let changes = snapshot.docChanges();
     changes.forEach(change => {
         console.log(change.doc.data());
