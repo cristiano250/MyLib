@@ -40,7 +40,7 @@ function renderBook(doc){
 // saving data
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    db.collection('Książki').addDoc({
+    db.collection('Książki').add({
         Tytuł: form.Tytuł.value,
         Gatunek: form.Gatunek.value,
         Ilość: form.Ilość.value
@@ -51,7 +51,7 @@ form.addEventListener('submit', (e) => {
 });
 
 // real-time listener
-db.collection('Książki').onSnapshot(snapshot => {
+db.collection('Książki').orderBy('Gatunek').onSnapshot(snapshot => {
     let changes = snapshot.docChanges();
     changes.forEach(change => {
         console.log(change.doc.data());
